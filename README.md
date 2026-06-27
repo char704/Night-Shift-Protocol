@@ -1,5 +1,6 @@
 # Night Shift Protocol
 
+Live app here: https://night-shift-protocol.vercel.app/
 A browser-based branching horror game built with HTML, CSS, and vanilla JavaScript.
 
 You work the night shift at an isolated convenience store beside an abandoned highway. From 00:00 to 06:00, a strange protocol, impossible customers, and shifting CCTV feeds decide whether you survive the shift, replace someone else, or break the loop.
