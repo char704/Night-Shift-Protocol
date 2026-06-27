@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Night Shift Protocol</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/state.js" defer></script>
+    <script src="js/story.js" defer></script>
+    <script src="js/game.js" defer></script>
+  </head>
+  <body class="sanity-stable">
+    <main id="app" class="game-shell" aria-live="polite">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Isolated Highway / 00:00-06:00</p>
+          <h1>Night Shift Protocol</h1>
+        </div>
+        <nav class="system-controls" aria-label="Game controls">
+          <button id="loadButton" class="utility-button" type="button">Load</button>
+          <button id="soundButton" class="utility-button" type="button" aria-pressed="false">Sound Off</button>
+          <button id="restartButton" class="utility-button danger" type="button">Restart</button>
+        </nav>
+      </header>
+
+      <section id="mediaFrame" class="media-frame" aria-labelledby="sceneTitle">
+        <img id="sceneImage" class="scene-image" alt="" hidden>
+        <div id="mediaFallback" class="media-fallback">NO SIGNAL</div>
+      </section>
+
+      <section class="stat-bar" aria-label="Shift status">
+        <div class="stat">
+          <span class="stat-label">Time</span>
+          <strong id="sceneTime">00:00</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Sanity</span>
+          <strong id="sanityValue">100</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Attention</span>
+          <strong id="attentionValue">0</strong>
+        </div>
+        <div class="stat secondary">
+          <span class="stat-label">Evidence</span>
+          <strong id="evidenceValue">0</strong>
+        </div>
+        <div class="stat secondary">
+          <span class="stat-label">Rules</span>
+          <strong id="rulesValue">0</strong>
+        </div>
+      </section>
+
+      <article class="story-panel">
+        <h2 id="sceneTitle">Start of Shift</h2>
+        <p id="narrative" class="narrative"></p>
+      </article>
+
+      <section id="choiceList" class="choice-list" aria-label="Choices"></section>
+
+      <aside class="inventory-strip" aria-label="Inventory log">
+        <span>Log</span>
+        <output id="inventory">No items logged</output>
+      </aside>
+    </main>
+  </body>
+</html>
