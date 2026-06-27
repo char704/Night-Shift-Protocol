@@ -273,7 +273,7 @@ const SCENES = {
   boy_event: {
     id: "boy_event",
     time: "01:17",
-    title: "The Boy Without a Shadow",
+    title: "The Midnight Customer",
     media: {
       type: "image",
       src: "assets/images/shadowless-boy.webp",
@@ -325,7 +325,7 @@ const SCENES = {
       type: "image",
       src: "assets/images/counter-milk.webp",
       alt: "A milk carton left on the counter.",
-      fallback: "The boy leaves the milk. The carton is heavier than it should be."
+      fallback: "The Customer leaves the milk. The carton is heavier than it should be."
     },
     text: [
       "You tell him the store is closed for that item.",
@@ -347,7 +347,7 @@ const SCENES = {
     },
     text: [
       "The register opens before you press total.",
-      "The boy leaves a coin dark with age and milk water.",
+      "The Customer leaves a coin dark with age and milk water.",
       "His reflection remains in the glass door after he is gone."
     ],
     choices: [{ text: "Pocket the coin", next: "phone_event" }]
@@ -361,7 +361,7 @@ const SCENES = {
       type: "image",
       src: "assets/images/boy-points.webp",
       alt: "A child pointing toward the storage room.",
-      fallback: "The boy points toward the storage door without looking at it."
+      fallback: "The Customer points toward the storage door without looking at it."
     },
     text: [
       "\"They are where you left them,\" he says.",
@@ -379,7 +379,7 @@ const SCENES = {
       type: "image",
       src: "assets/images/empty-cctv.webp",
       alt: "A CCTV feed showing an empty counter.",
-      fallback: "The CCTV feed shows the counter empty. It does not show the boy. It does not show you."
+      fallback: "The CCTV feed shows the counter empty. It does not show The Customer. It does not show you."
     },
     text: [
       "Camera #4 shows the counter empty.",
