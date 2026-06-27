@@ -2,6 +2,8 @@
 .vs/
 *.user
 *.suo
+*.sqlite
+*.sqlite3
 *.userosscache
 *.sln.docstates
 
@@ -18,4 +20,3 @@ yarn-error.log*
 # Local environment files
 .env
 .env.*
-

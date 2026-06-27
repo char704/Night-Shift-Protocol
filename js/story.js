@@ -7,7 +7,7 @@ const SCENES = {
     title: "Start of Shift",
     media: {
       type: "image",
-      src: "assets/images/storefront-0000.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The convenience store under dead fluorescent light.",
       fallback: MEDIA_FALLBACK
     },
@@ -35,7 +35,7 @@ const SCENES = {
     title: "The Night Shift Protocol",
     media: {
       type: "image",
-      src: "assets/images/protocol-sheet.webp",
+      src: "assets/images/storage-door.webp",
       alt: "A laminated rules sheet with old fingerprints under the plastic.",
       fallback: "The protocol sheet is readable in the register light."
     },
@@ -62,9 +62,10 @@ const SCENES = {
     title: "Camera Bank",
     media: {
       type: "image",
-      src: "assets/images/cctv-bank.webp",
+      src: "assets/images/duplicate-cctv.webp",
       alt: "Four CCTV feeds stacked on a small monitor.",
-      fallback: "The CCTV screen rolls with gray static."
+      fallback: "The CCTV screen rolls with gray static.",
+      overlay: "cctv"
     },
     text: [
       "Camera #1 shows the pumps. Camera #2 shows the aisle with the cheap umbrellas.",
@@ -112,7 +113,7 @@ const SCENES = {
     title: "Highway Window",
     media: {
       type: "image",
-      src: "assets/images/bus-stop.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The bus stop across the highway.",
       fallback: "Across the highway, the bus stop is a darker shape inside the dark."
     },
@@ -204,7 +205,7 @@ const SCENES = {
     title: "Ten Seconds",
     media: {
       type: "image",
-      src: "assets/images/fridge-dark.webp",
+      src: "assets/images/fridge-four.webp",
       alt: "The aisle in complete darkness.",
       fallback: "The lights go out. The store breathes around you."
     },
@@ -222,7 +223,7 @@ const SCENES = {
     title: "Manual Override",
     media: {
       type: "image",
-      src: "assets/images/fridge-handprint.webp",
+      src: "assets/images/fridge-four.webp",
       alt: "A handprint fogged on a cooler door.",
       fallback: "A handprint blooms inside the cooler glass where your hand touched outside."
     },
@@ -240,7 +241,7 @@ const SCENES = {
     title: "Inside the Cooler",
     media: {
       type: "image",
-      src: "assets/images/fridge-receipt.webp",
+      src: "assets/images/fridge-four.webp",
       alt: "A receipt stuck to frost inside the fridge.",
       fallback: "A receipt is frozen to the back wall, dated tomorrow."
     },
@@ -258,7 +259,7 @@ const SCENES = {
     title: "Left Open",
     media: {
       type: "image",
-      src: "assets/images/fridge-open.webp",
+      src: "assets/images/fridge-four.webp",
       alt: "Cold vapor spilling across the floor.",
       fallback: "Cold vapor crawls from aisle four to the register."
     },
@@ -276,7 +277,7 @@ const SCENES = {
     title: "The Midnight Customer",
     media: {
       type: "image",
-      src: "assets/images/shadowless-boy.webp",
+      src: "assets/images/storage-door.webp",
       alt: "A wet child holding one carton of milk.",
       fallback: "A wet child stands at the counter with one carton of milk."
     },
@@ -323,7 +324,7 @@ const SCENES = {
     title: "No Sale",
     media: {
       type: "image",
-      src: "assets/images/counter-milk.webp",
+      src: "assets/images/storage-door.webp",
       alt: "A milk carton left on the counter.",
       fallback: "The Customer leaves the milk. The carton is heavier than it should be."
     },
@@ -341,7 +342,7 @@ const SCENES = {
     title: "Old Coin",
     media: {
       type: "image",
-      src: "assets/images/old-coin.webp",
+      src: "assets/images/storage-door.webp",
       alt: "A dark coin on the counter.",
       fallback: "He pays with a coin too old for the register."
     },
@@ -359,7 +360,7 @@ const SCENES = {
     title: "Pointing",
     media: {
       type: "image",
-      src: "assets/images/boy-points.webp",
+      src: "assets/images/storage-door.webp",
       alt: "A child pointing toward the storage room.",
       fallback: "The Customer points toward the storage door without looking at it."
     },
@@ -377,9 +378,10 @@ const SCENES = {
     title: "Empty Feed",
     media: {
       type: "image",
-      src: "assets/images/empty-cctv.webp",
+      src: "assets/images/duplicate-cctv.webp",
       alt: "A CCTV feed showing an empty counter.",
-      fallback: "The CCTV feed shows the counter empty. It does not show The Customer. It does not show you."
+      fallback: "The CCTV feed shows the counter empty. It does not show The Customer. It does not show you.",
+      overlay: "cctv"
     },
     text: [
       "Camera #4 shows the counter empty.",
@@ -395,8 +397,8 @@ const SCENES = {
     title: "The Phone Call",
     media: {
       type: "image",
-      src: "assets/images/own-number.webp",
-      alt: "The phone display showing your own number.",
+      src: "assets/images/manager-phone.webp",
+      alt: "The store phone displaying the cashier's own number.",
       fallback: "The phone rings. Caller ID shows your own number."
     },
     text: [
@@ -436,7 +438,7 @@ const SCENES = {
     title: "Let It Ring",
     media: {
       type: "image",
-      src: "assets/images/ringing-phone.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "A ringing phone under fluorescent light.",
       fallback: "The phone rings for forty-six seconds, then stops mid-tone."
     },
@@ -454,7 +456,7 @@ const SCENES = {
     title: "Your Voice",
     media: {
       type: "image",
-      src: "assets/images/phone-static.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "The phone receiver pressed to a dark ear.",
       fallback: "Static opens into your own voice."
     },
@@ -472,7 +474,7 @@ const SCENES = {
     title: "No Dial Tone",
     media: {
       type: "image",
-      src: "assets/images/cut-cord.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "A phone cord lying loose.",
       fallback: "The cord comes free. The phone keeps ringing."
     },
@@ -490,7 +492,7 @@ const SCENES = {
     title: "Captured Message",
     media: {
       type: "image",
-      src: "assets/images/tape-recorder.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "A small tape recorder beside the phone.",
       fallback: "The recorder catches a voice under the ringing."
     },
@@ -508,7 +510,7 @@ const SCENES = {
     title: "The Basement Question",
     media: {
       type: "image",
-      src: "assets/images/raincoat-man.webp",
+      src: "assets/images/storage-door.webp",
       alt: "A man in a raincoat at the counter.",
       fallback: "A man in a raincoat enters. The floor under him stays dry."
     },
@@ -553,7 +555,7 @@ const SCENES = {
     title: "Exact Words",
     media: {
       type: "image",
-      src: "assets/images/raincoat-exit.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The man in the raincoat leaving.",
       fallback: "The man leaves as if pulled backward by a hook."
     },
@@ -571,7 +573,7 @@ const SCENES = {
     title: "Wrong Answer",
     media: {
       type: "image",
-      src: "assets/images/raincoat-close.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The raincoat man leaning close.",
       fallback: "He leans close enough for you to hear water moving in his sleeves."
     },
@@ -589,7 +591,7 @@ const SCENES = {
     title: "Toward Storage",
     media: {
       type: "image",
-      src: "assets/images/storage-shadow.webp",
+      src: "assets/images/storage-door.webp",
       alt: "A long shadow under the storage door.",
       fallback: "You point to storage. Something inside knocks once in answer."
     },
@@ -607,7 +609,7 @@ const SCENES = {
     title: "Why",
     media: {
       type: "image",
-      src: "assets/images/raincoat-mouth.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The raincoat man's mouth hidden by shadow.",
       fallback: "He answers with his eyes on the CCTV monitor."
     },
@@ -625,7 +627,7 @@ const SCENES = {
     title: "Voice in Storage",
     media: {
       type: "image",
-      src: "assets/images/storage-0312.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The storage door vibrating in its frame.",
       fallback: "At 03:12, the storage door begins to knock."
     },
@@ -676,7 +678,7 @@ const SCENES = {
     title: "Closed Door",
     media: {
       type: "image",
-      src: "assets/images/closed-storage.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The storage door still closed.",
       fallback: "You keep the door closed. The voice thanks you in Mr. Hale's tone."
     },
@@ -694,8 +696,8 @@ const SCENES = {
     title: "Behind Storage",
     media: {
       type: "image",
-      src: "assets/images/storage-open.webp",
-      alt: "An old uniform and stairs beyond the storage room.",
+      src: "assets/images/basement-stairs.webp",
+      alt: "Hidden stairs descending from inside the storage room.",
       fallback: "Inside: an old uniform, a shift journal, and stairs where shelves should be."
     },
     text: [
@@ -712,7 +714,7 @@ const SCENES = {
     title: "Hale Reacts",
     media: {
       type: "image",
-      src: "assets/images/hale-call.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "The phone receiver shaking on the counter.",
       fallback: "Mr. Hale answers with a breath sharp enough to cut the line."
     },
@@ -730,7 +732,7 @@ const SCENES = {
     title: "Through the Door",
     media: {
       type: "image",
-      src: "assets/images/door-whisper.webp",
+      src: "assets/images/storage-door.webp",
       alt: "A mouth-shaped fog mark on the storage door.",
       fallback: "Your breath fogs the door from the wrong side."
     },
@@ -748,9 +750,10 @@ const SCENES = {
     title: "The Other You",
     media: {
       type: "image",
-      src: "assets/images/camera-three.webp",
-      alt: "Camera #3 showing a duplicate cashier in storage.",
-      fallback: "Camera #3 shows someone who looks like you standing inside storage."
+      src: "assets/images/duplicate-cctv.webp",
+      alt: "Camera #3 showing a duplicate cashier inside storage.",
+      fallback: "Camera #3 shows someone who looks like you standing inside storage.",
+      overlay: "cctv"
     },
     text: [
       "The CCTV monitor clicks to Camera #3 by itself.",
@@ -800,9 +803,10 @@ const SCENES = {
     title: "Black Screen",
     media: {
       type: "image",
-      src: "assets/images/monitor-off.webp",
+      src: "assets/images/duplicate-cctv.webp",
       alt: "A black CCTV monitor reflecting the register.",
-      fallback: "The monitor goes black. The reflection stays a second too long."
+      fallback: "The monitor goes black. The reflection stays a second too long.",
+      overlay: "cctv"
     },
     text: [
       "You turn the monitor off.",
@@ -818,9 +822,10 @@ const SCENES = {
     title: "More Than Five",
     media: {
       type: "image",
-      src: "assets/images/duplicate-close.webp",
+      src: "assets/images/duplicate-cctv.webp",
       alt: "A duplicate face close to the CCTV camera.",
-      fallback: "The duplicate crosses the screen in four frames and stands behind you in the fifth."
+      fallback: "The duplicate crosses the screen in four frames and stands behind you in the fifth.",
+      overlay: "cctv"
     },
     text: [
       "At six seconds, the duplicate looks directly into the camera.",
@@ -836,16 +841,28 @@ const SCENES = {
     title: "Written Notes",
     media: {
       type: "image",
-      src: "assets/images/duplicate-note.webp",
+      src: "assets/images/duplicate-cctv.webp",
       alt: "A note held to a CCTV camera.",
-      fallback: "You write DO YOU KNOW THE WAY OUT. The duplicate holds up: BREAK ONE RULE. ONLY ONE THAT MATTERS."
+      fallback: "You write DO YOU KNOW THE WAY OUT. The duplicate holds up: BREAK ONE RULE. ONLY ONE THAT MATTERS.",
+      overlay: "cctv"
     },
     text: [
       "You write questions on receipt paper and hold them to the camera.",
       "The duplicate answers with the same receipt pad inside storage.",
       "Their last note reads: SHUT DOWN CAMERA THREE LAST."
     ],
-    choices: [{ text: "Keep the photo", next: "manager_call" }]
+    choices: [
+      {
+        text: "Keep the photo",
+        next: "manager_call",
+        effects: {
+          flags: {
+            sawDuplicate: true,
+            receivedShutdownOrder: true
+          }
+        }
+      }
+    ]
   },
 
   duplicate_destroy: {
@@ -854,9 +871,10 @@ const SCENES = {
     title: "No Camera Three",
     media: {
       type: "image",
-      src: "assets/images/camera-broken.webp",
+      src: "assets/images/duplicate-cctv.webp",
       alt: "A cracked CCTV monitor.",
-      fallback: "You smash Camera #3. The room sound lowers, as if the store has lost an eye."
+      fallback: "You smash Camera #3. The room sound lowers, as if the store has lost an eye.",
+      overlay: "cctv"
     },
     text: [
       "The monitor cracks inward.",
@@ -872,7 +890,7 @@ const SCENES = {
     title: "Manager Call",
     media: {
       type: "image",
-      src: "assets/images/manager-call-0500.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "The phone ringing at 05:00.",
       fallback: "At 05:00, Mr. Hale calls. The ring sounds rehearsed."
     },
@@ -881,6 +899,9 @@ const SCENES = {
       state.flags.answeredOwnCall
         ? "Under his voice, you hear your own caller breathing on the line."
         : "The line is clean except for the tiny scrape of a pen.",
+      state.flags.exactBasementLine
+        ? "\"You used the basement line correctly,\" he says. \"That does not mean it was true.\""
+        : "\"Improvised basement responses are recorded as structural damage,\" he says.",
       state.evidence >= 4
         ? "He says this before hello, as if your evidence has made him late."
         : "His voice is calm and formal, the same sentence polished by repetition.",
@@ -922,7 +943,7 @@ const SCENES = {
     title: "Accurate Report",
     media: {
       type: "image",
-      src: "assets/images/hale-listens.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "The phone line open beside the protocol sheet.",
       fallback: "Mr. Hale listens without breathing."
     },
@@ -942,7 +963,7 @@ const SCENES = {
     title: "False Report",
     media: {
       type: "image",
-      src: "assets/images/register-slip.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "A receipt printing by itself.",
       fallback: "The register prints your lie before you finish saying it."
     },
@@ -960,7 +981,7 @@ const SCENES = {
     title: "Previous Employees",
     media: {
       type: "image",
-      src: "assets/images/old-roster.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "An employee roster printed on old thermal paper.",
       fallback: "The fax machine prints a roster with your name written once per decade."
     },
@@ -978,7 +999,7 @@ const SCENES = {
     title: "The Accusation",
     media: {
       type: "image",
-      src: "assets/images/hale-static.webp",
+      src: "assets/images/manager-phone.webp",
       alt: "Static forming the outline of a man's face.",
       fallback: "The line fills with static. Mr. Hale speaks from every speaker in the store."
     },
@@ -998,7 +1019,7 @@ const SCENES = {
     title: "Final Event",
     media: {
       type: "image",
-      src: "assets/images/final-blackout.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The store during the 05:45 blackout.",
       fallback: "At 05:45, the lights fail and the front door unlocks."
     },
@@ -1066,8 +1087,7 @@ const SCENES = {
     choices: [
       {
         text: "Step into the monitor room",
-        next: "ending_check",
-        effects: { flags: { waitedForSunrise: true } }
+        next: "ending_check"
       }
     ]
   },
@@ -1078,21 +1098,30 @@ const SCENES = {
     title: "Camera Shutdown",
     media: {
       type: "image",
-      src: "assets/images/cctv-breakers.webp",
+      src: "assets/images/duplicate-cctv.webp",
       alt: "A breaker panel labeled with camera numbers.",
-      fallback: "Behind the CCTV rack, four breakers wait in a row."
+      fallback: "Behind the CCTV rack, four breakers wait in a row.",
+      overlay: "cctv"
     },
     text: (state) => [
       "You spread the evidence beneath the CCTV rack: coin, badge, journal, recording, photo.",
-      state.flags.sawDuplicate
+      state.flags.receivedShutdownOrder
         ? "The duplicate's last note tells you the order."
         : "Without the duplicate's note, the order is guesswork.",
+      state.flags.usedEvidence
+        ? "The proof does not convince the store. It only gives your hands something steady to do."
+        : "The evidence waits in a neat row, too late to feel like a plan.",
       "Camera #3 hums like a throat trying not to speak."
     ],
     choices: [
       {
         text: "Pull the camera breakers in order",
         next: "ending_check",
+        condition: (state) => {
+          return state.evidence >= 4 &&
+            state.flags.receivedShutdownOrder &&
+            !state.flags.destroyedCamera;
+        },
         effects: {
           flags: {
             disabledCCTV: true,
@@ -1118,7 +1147,7 @@ const SCENES = {
     title: "06:00",
     media: {
       type: "image",
-      src: "assets/images/six-am.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The store clock at 06:00.",
       fallback: "The clock reaches 06:00. The sky outside remains black."
     },
@@ -1136,7 +1165,7 @@ const SCENES = {
     isEnding: true,
     media: {
       type: "image",
-      src: "assets/images/ending-perfect.webp",
+      src: "assets/images/storage-door.webp",
       alt: "Mr. Hale at the front door.",
       fallback: "Mr. Hale arrives exactly when the clock stops pretending."
     },
@@ -1156,7 +1185,7 @@ const SCENES = {
     isEnding: true,
     media: {
       type: "image",
-      src: "assets/images/ending-replacement.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The bus stop outside the store.",
       fallback: "A new employee enters. You are outside at the bus stop."
     },
@@ -1176,7 +1205,7 @@ const SCENES = {
     isEnding: true,
     media: {
       type: "image",
-      src: "assets/images/ending-road.webp",
+      src: "assets/images/storage-door.webp",
       alt: "The highway leading back to the store.",
       fallback: "The road stretches away, then bends back toward the store."
     },
@@ -1216,7 +1245,7 @@ const SCENES = {
     isEnding: true,
     media: {
       type: "image",
-      src: "assets/images/ending-sunrise.webp",
+      src: "assets/images/ending-basement.webp",
       alt: "The store disappearing at sunrise.",
       fallback: "At sunrise, the store becomes a reflection with no glass."
     },
@@ -1234,13 +1263,17 @@ function resolveEnding(state) {
   const hasOldCoin = state.inventory.includes("old coin");
   const enoughEvidence = state.evidence >= 5;
   const controlledViolations = state.rulesBroken <= 3;
+  const managerCompliant = state.flags.trustedManager &&
+    (state.flags.waitedForHale || state.flags.waitedForSunrise);
 
   if (
     state.flags.servedBoy &&
     hasOldCoin &&
     enoughEvidence &&
     state.flags.openedStorage &&
+    state.flags.receivedShutdownOrder &&
     state.flags.disabledCCTV &&
+    state.flags.followedDuplicate &&
     !state.flags.leftBeforeSunrise &&
     controlledViolations &&
     state.sanity >= 35
@@ -1268,8 +1301,7 @@ function resolveEnding(state) {
     state.rulesBroken <= 1 &&
     state.evidence <= 1 &&
     !state.flags.openedStorage &&
-    state.flags.trustedManager &&
-    (state.flags.waitedForHale || state.flags.waitedForSunrise)
+    managerCompliant
   ) {
     return "ending_perfect";
   }
@@ -1278,7 +1310,7 @@ function resolveEnding(state) {
     return "ending_beneath";
   }
 
-  return "ending_perfect";
+  return "ending_replacement";
 }
 
 window.SCENES = SCENES;

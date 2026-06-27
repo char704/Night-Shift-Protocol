@@ -1,4 +1,5 @@
 const SAVE_KEY = "nightShiftProtocolSave";
+const SAVE_VERSION = 1;
 
 const initialGameState = {
   sanity: 100,
@@ -25,7 +26,8 @@ const initialGameState = {
     waitedForSunrise: false,
     waitedForHale: false,
     followedDuplicate: false,
-    exactBasementLine: false
+    exactBasementLine: false,
+    receivedShutdownOrder: false
   }
 };
 
@@ -41,6 +43,10 @@ function deepClone(value) {
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
+}
+
+function isPlainObject(value) {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
 }
 
 function resetGameState() {
@@ -145,8 +151,9 @@ function saveGame(sceneId) {
     localStorage.setItem(
       SAVE_KEY,
       JSON.stringify({
+        version: SAVE_VERSION,
         sceneId,
-        state: gameState
+        state: deepClone(gameState)
       })
     );
   } catch (error) {
@@ -154,7 +161,7 @@ function saveGame(sceneId) {
   }
 }
 
-function loadSavedGame() {
+function loadSavedGame(validSceneIds) {
   try {
     const rawSave = localStorage.getItem(SAVE_KEY);
     if (!rawSave) {
@@ -162,25 +169,83 @@ function loadSavedGame() {
     }
 
     const parsedSave = JSON.parse(rawSave);
-    if (!parsedSave || !parsedSave.state || !parsedSave.sceneId) {
+    if (
+      !parsedSave ||
+      parsedSave.version !== SAVE_VERSION ||
+      typeof parsedSave.sceneId !== "string" ||
+      !isValidSavedScene(parsedSave.sceneId, validSceneIds)
+    ) {
+      clearSavedGame();
+      return null;
+    }
+
+    const normalizedState = normalizeLoadedState(parsedSave.state);
+    if (!normalizedState) {
+      clearSavedGame();
       return null;
     }
 
     resetGameState();
-    Object.assign(gameState, parsedSave.state);
-    gameState.flags = {
-      ...initialGameState.flags,
-      ...parsedSave.state.flags
-    };
-    gameState.inventory = Array.isArray(parsedSave.state.inventory)
-      ? [...parsedSave.state.inventory]
-      : [];
+    Object.assign(gameState, normalizedState);
 
     return parsedSave.sceneId;
   } catch (error) {
     console.warn("Load failed.", error);
+    clearSavedGame();
     return null;
   }
+}
+
+function isValidSavedScene(sceneId, validSceneIds) {
+  if (!validSceneIds) {
+    return true;
+  }
+
+  if (validSceneIds instanceof Set) {
+    return validSceneIds.has(sceneId);
+  }
+
+  return Array.isArray(validSceneIds) && validSceneIds.includes(sceneId);
+}
+
+function normalizeLoadedState(savedState) {
+  if (!isPlainObject(savedState)) {
+    return null;
+  }
+
+  const normalizedState = createInitialGameState();
+  const statLimits = {
+    sanity: [0, 100],
+    attention: [0, 12],
+    evidence: [0, 99],
+    rulesBroken: [0, 99]
+  };
+
+  for (const [key, [min, max]] of Object.entries(statLimits)) {
+    if (!Number.isFinite(savedState[key])) {
+      return null;
+    }
+    normalizedState[key] = clamp(savedState[key], min, max);
+  }
+
+  if (typeof savedState.currentTime === "string" && savedState.currentTime.length > 0) {
+    normalizedState.currentTime = savedState.currentTime;
+  }
+
+  if (Array.isArray(savedState.inventory)) {
+    normalizedState.inventory = [...new Set(savedState.inventory.filter((item) => {
+      return typeof item === "string" && item.trim().length > 0;
+    }))];
+  }
+
+  if (isPlainObject(savedState.flags)) {
+    normalizedState.flags = {
+      ...normalizedState.flags,
+      ...savedState.flags
+    };
+  }
+
+  return normalizedState;
 }
 
 function clearSavedGame() {
@@ -193,6 +258,7 @@ function clearSavedGame() {
 
 window.gameState = gameState;
 window.initialGameState = initialGameState;
+window.SAVE_VERSION = SAVE_VERSION;
 window.resetGameState = resetGameState;
 window.setCurrentTime = setCurrentTime;
 window.applyEffects = applyEffects;

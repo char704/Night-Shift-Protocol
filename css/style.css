@@ -143,6 +143,12 @@ h1 {
   background: #131916;
 }
 
+.utility-button:focus-visible,
+.choice-button:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
 .utility-button:active,
 .choice-button:active {
   transform: translateY(1px);
@@ -153,6 +159,12 @@ h1 {
   opacity: 0.42;
 }
 
+.choice-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  pointer-events: none;
+}
+
 .utility-button.danger {
   border-color: rgba(255, 91, 77, 0.42);
 }
@@ -160,8 +172,8 @@ h1 {
 .media-frame {
   position: relative;
   display: grid;
-  min-height: 210px;
-  aspect-ratio: 16 / 7;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   place-items: center;
   border: 1px solid rgba(145, 255, 183, 0.28);
@@ -182,7 +194,7 @@ h1 {
   z-index: 1;
 }
 
-.media-frame::after {
+.media-frame[data-overlay="cctv"]::after {
   position: absolute;
   right: 14px;
   bottom: 12px;
@@ -198,7 +210,7 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: contrast(1.15) saturate(0.65) brightness(0.72);
+  filter: contrast(1.08) saturate(0.78) brightness(0.88);
 }
 
 .media-fallback {
@@ -449,16 +461,12 @@ h1 {
   }
 
   .media-frame {
-    min-height: 180px;
-    aspect-ratio: 4 / 3;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
   }
 
   .stat-bar {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .stat.secondary {
-    display: none;
   }
 
   .story-panel {

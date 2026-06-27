@@ -16,6 +16,7 @@ let visibleChoices = [];
 let typeTimer = null;
 let resolveTimer = null;
 let isTyping = false;
+let isTransitioning = false;
 let activeTypeComplete = null;
 let fullNarrativeText = "";
 let audioContext = null;
@@ -60,7 +61,7 @@ function bindEvents() {
   document.addEventListener("keydown", (event) => {
     const key = event.key.toLowerCase();
 
-    if (isTyping) {
+    if (isTyping && !event.ctrlKey && !event.metaKey && !event.altKey) {
       skipTypewriter();
       return;
     }
@@ -68,6 +69,10 @@ function bindEvents() {
     if (key === "r" && event.ctrlKey) {
       event.preventDefault();
       restartGame();
+      return;
+    }
+
+    if (event.ctrlKey || event.metaKey || event.altKey) {
       return;
     }
 
@@ -114,7 +119,7 @@ function renderScene(sceneId, options = {}) {
 
   startTypewriter(text, onComplete);
 
-  if (!options.skipSave) {
+  if (!options.skipSave && !scene.resolve) {
     saveGame(sceneId);
     updateLoadButton();
   }
@@ -151,6 +156,7 @@ function startTypewriter(text, onComplete) {
   activeTypeComplete = onComplete;
   isTyping = true;
   dom.narrative.textContent = "";
+  dom.narrative.setAttribute("aria-live", "off");
   dom.narrative.classList.add("typing");
 
   let index = 0;
@@ -169,6 +175,7 @@ function startTypewriter(text, onComplete) {
 function finishTypewriter() {
   stopTypewriter();
   dom.narrative.textContent = fullNarrativeText;
+  dom.narrative.setAttribute("aria-live", "polite");
   dom.narrative.classList.remove("typing");
 
   const complete = activeTypeComplete;
@@ -230,9 +237,15 @@ function renderChoices(scene) {
 }
 
 function handleChoice(choice) {
-  if (!choice) {
+  if (!choice || isTransitioning) {
     return;
   }
+
+  isTransitioning = true;
+  visibleChoices = [];
+  dom.choiceList.querySelectorAll(".choice-button").forEach((button) => {
+    button.disabled = true;
+  });
 
   if (choice.action === "restart") {
     restartGame();
@@ -242,11 +255,16 @@ function handleChoice(choice) {
   applyEffects(choice.effects);
   playTone("choice");
   renderScene(choice.next);
+
+  requestAnimationFrame(() => {
+    isTransitioning = false;
+  });
 }
 
 function renderMedia(media) {
   const fallbackText = media?.fallback || "NO SIGNAL";
   dom.mediaFrame.dataset.time = gameState.currentTime;
+  dom.mediaFrame.dataset.overlay = media?.overlay || "none";
   dom.mediaFallback.textContent = fallbackText;
   dom.mediaFallback.hidden = false;
   dom.sceneImage.hidden = true;
@@ -287,6 +305,7 @@ function updateStateDisplay() {
 
 function restartGame() {
   clearTimers();
+  isTransitioning = false;
   resetGameState();
   clearSavedGame();
   renderScene("start", { skipSave: true });
@@ -295,7 +314,8 @@ function restartGame() {
 }
 
 function loadGameFromStorage() {
-  const loadedSceneId = loadSavedGame();
+  isTransitioning = false;
+  const loadedSceneId = loadSavedGame(Object.keys(SCENES));
   if (!loadedSceneId || !SCENES[loadedSceneId]) {
     updateLoadButton();
     return;
