@@ -115,7 +115,31 @@ Game concept, writing, and implementation are maintained in this repository.
 
 ## Asset Notes
 
-Approved images live in `assets/images/`. Several secondary scenes intentionally reuse approved assets until more specific artwork is available. Missing image files should not break gameplay; the media area falls back to scene text.
+Approved images live in `assets/images/` and are validated against required story scenes.
+
+Current approved assets:
+
+- `fridge-four.webp`
+- `manager-phone.webp`
+- `customer-milk.webp`
+- `raincoat-man.webp`
+- `storage-door.webp`
+- `duplicate-cctv.webp`
+- `basement-stairs.webp`
+- `ending-basement.webp`
+- `ending-sunrise.webp`
+
+Several secondary scenes intentionally reuse approved assets until more specific artwork is available. When no semantically correct image exists, the scene uses fallback text instead of a mismatched image.
+
+Optional images still missing:
+
+- `empty-store.webp`
+- `protocol-sheet.webp`
+- `bus-stop.webp`
+- `final-blackout.webp`
+- `six-am.webp`
+- `ending-perfect.webp`
+- `ending-road.webp`
 
 ## License
 

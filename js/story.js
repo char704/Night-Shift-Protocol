@@ -7,7 +7,6 @@ const SCENES = {
     title: "Start of Shift",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
       alt: "The convenience store under dead fluorescent light.",
       fallback: MEDIA_FALLBACK
     },
@@ -35,7 +34,6 @@ const SCENES = {
     title: "The Night Shift Protocol",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
       alt: "A laminated rules sheet with old fingerprints under the plastic.",
       fallback: "The protocol sheet is readable in the register light."
     },
@@ -113,7 +111,6 @@ const SCENES = {
     title: "Highway Window",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
       alt: "The bus stop across the highway.",
       fallback: "Across the highway, the bus stop is a darker shape inside the dark."
     },
@@ -277,8 +274,8 @@ const SCENES = {
     title: "The Midnight Customer",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
-      alt: "A wet child holding one carton of milk.",
+      src: "assets/images/customer-milk.webp",
+      alt: "A wet child holding a carton of milk at the counter.",
       fallback: "A wet child stands at the counter with one carton of milk."
     },
     text: [
@@ -324,8 +321,8 @@ const SCENES = {
     title: "No Sale",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
-      alt: "A milk carton left on the counter.",
+      src: "assets/images/customer-milk.webp",
+      alt: "A wet child leaving a carton of milk at the counter.",
       fallback: "The Customer leaves the milk. The carton is heavier than it should be."
     },
     text: [
@@ -342,8 +339,8 @@ const SCENES = {
     title: "Old Coin",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
-      alt: "A dark coin on the counter.",
+      src: "assets/images/customer-milk.webp",
+      alt: "A wet child paying for milk at the counter.",
       fallback: "He pays with a coin too old for the register."
     },
     text: [
@@ -360,7 +357,7 @@ const SCENES = {
     title: "Pointing",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
+      src: "assets/images/customer-milk.webp",
       alt: "A child pointing toward the storage room.",
       fallback: "The Customer points toward the storage door without looking at it."
     },
@@ -510,8 +507,8 @@ const SCENES = {
     title: "The Basement Question",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
-      alt: "A man in a raincoat at the counter.",
+      src: "assets/images/raincoat-man.webp",
+      alt: "A man in a raincoat standing at the counter.",
       fallback: "A man in a raincoat enters. The floor under him stays dry."
     },
     text: [
@@ -555,7 +552,7 @@ const SCENES = {
     title: "Exact Words",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
+      src: "assets/images/raincoat-man.webp",
       alt: "The man in the raincoat leaving.",
       fallback: "The man leaves as if pulled backward by a hook."
     },
@@ -573,7 +570,7 @@ const SCENES = {
     title: "Wrong Answer",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
+      src: "assets/images/raincoat-man.webp",
       alt: "The raincoat man leaning close.",
       fallback: "He leans close enough for you to hear water moving in his sleeves."
     },
@@ -609,7 +606,7 @@ const SCENES = {
     title: "Why",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
+      src: "assets/images/raincoat-man.webp",
       alt: "The raincoat man's mouth hidden by shadow.",
       fallback: "He answers with his eyes on the CCTV monitor."
     },
@@ -1019,7 +1016,6 @@ const SCENES = {
     title: "Final Event",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
       alt: "The store during the 05:45 blackout.",
       fallback: "At 05:45, the lights fail and the front door unlocks."
     },
@@ -1147,7 +1143,6 @@ const SCENES = {
     title: "06:00",
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
       alt: "The store clock at 06:00.",
       fallback: "The clock reaches 06:00. The sky outside remains black."
     },
@@ -1165,7 +1160,6 @@ const SCENES = {
     isEnding: true,
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
       alt: "Mr. Hale at the front door.",
       fallback: "Mr. Hale arrives exactly when the clock stops pretending."
     },
@@ -1185,7 +1179,6 @@ const SCENES = {
     isEnding: true,
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
       alt: "The bus stop outside the store.",
       fallback: "A new employee enters. You are outside at the bus stop."
     },
@@ -1205,7 +1198,6 @@ const SCENES = {
     isEnding: true,
     media: {
       type: "image",
-      src: "assets/images/storage-door.webp",
       alt: "The highway leading back to the store.",
       fallback: "The road stretches away, then bends back toward the store."
     },
@@ -1245,8 +1237,8 @@ const SCENES = {
     isEnding: true,
     media: {
       type: "image",
-      src: "assets/images/ending-basement.webp",
-      alt: "The store disappearing at sunrise.",
+      src: "assets/images/ending-sunrise.webp",
+      alt: "The convenience store disappearing in the light of sunrise.",
       fallback: "At sunrise, the store becomes a reflection with no glass."
     },
     text: [

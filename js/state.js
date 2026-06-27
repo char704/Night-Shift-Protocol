@@ -108,8 +108,14 @@ function applyStatChanges(stats) {
       continue;
     }
 
+    const delta = Number(amount);
+    if (!Number.isFinite(delta)) {
+      console.warn(`Invalid stat change for ${key}:`, amount);
+      continue;
+    }
+
     const [min, max] = limits[key];
-    gameState[key] = clamp(gameState[key] + amount, min, max);
+    gameState[key] = clamp(gameState[key] + delta, min, max);
   }
 }
 
@@ -239,10 +245,11 @@ function normalizeLoadedState(savedState) {
   }
 
   if (isPlainObject(savedState.flags)) {
-    normalizedState.flags = {
-      ...normalizedState.flags,
-      ...savedState.flags
-    };
+    for (const key of Object.keys(initialGameState.flags)) {
+      if (typeof savedState.flags[key] === "boolean") {
+        normalizedState.flags[key] = savedState.flags[key];
+      }
+    }
   }
 
   return normalizedState;

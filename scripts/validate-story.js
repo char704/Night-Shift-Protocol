@@ -22,6 +22,7 @@ const expectedEndings = [
 const approvedAssets = [
   "assets/images/fridge-four.webp",
   "assets/images/manager-phone.webp",
+  "assets/images/customer-milk.webp",
   "assets/images/raincoat-man.webp",
   "assets/images/storage-door.webp",
   "assets/images/duplicate-cctv.webp",
@@ -29,6 +30,21 @@ const approvedAssets = [
   "assets/images/ending-basement.webp",
   "assets/images/ending-sunrise.webp"
 ];
+
+const requiredSceneAssets = {
+  fridge_event: "assets/images/fridge-four.webp",
+  start_call: "assets/images/manager-phone.webp",
+  phone_event: "assets/images/manager-phone.webp",
+  boy_event: "assets/images/customer-milk.webp",
+  basement_question: "assets/images/raincoat-man.webp",
+  start_storage: "assets/images/storage-door.webp",
+  storage_voice: "assets/images/storage-door.webp",
+  other_you: "assets/images/duplicate-cctv.webp",
+  storage_open: "assets/images/basement-stairs.webp",
+  final_basement: "assets/images/basement-stairs.webp",
+  ending_beneath: "assets/images/ending-basement.webp",
+  ending_break_protocol: "assets/images/ending-sunrise.webp"
+};
 
 function fail(message) {
   errors.push(message);
@@ -73,6 +89,10 @@ function assertMedia() {
     const mediaPath = scene.media.src;
     referencedAssets.add(mediaPath);
 
+    if (mediaPath.includes(".webp.png")) {
+      fail(`Stale double-extension media path for ${sceneId}: ${mediaPath}`);
+    }
+
     if (!fs.existsSync(path.join(root, mediaPath))) {
       fail(`Missing media file for ${sceneId}: ${mediaPath}`);
     }
@@ -81,12 +101,32 @@ function assertMedia() {
   for (const assetPath of approvedAssets) {
     const exists = fs.existsSync(path.join(root, assetPath));
     if (!exists) {
-      warn(`Approved asset not present in checkout: ${assetPath}`);
+      fail(`Approved asset not present in checkout: ${assetPath}`);
       continue;
     }
 
     if (!referencedAssets.has(assetPath)) {
       fail(`Approved asset exists but is not referenced by any scene: ${assetPath}`);
+    }
+  }
+}
+
+function assertRequiredSceneAssets() {
+  for (const [sceneId, expectedAsset] of Object.entries(requiredSceneAssets)) {
+    const scene = scenes[sceneId];
+
+    if (!scene) {
+      fail(`Missing required scene for asset mapping: ${sceneId}`);
+      continue;
+    }
+
+    const actualAsset = scene.media?.src;
+
+    if (actualAsset !== expectedAsset) {
+      fail(
+        `Incorrect asset mapping for ${sceneId}: ` +
+        `expected ${expectedAsset}, got ${actualAsset || "none"}`
+      );
     }
   }
 }
@@ -235,6 +275,7 @@ function assertEndingReachability() {
 
 assertGraph();
 assertMedia();
+assertRequiredSceneAssets();
 assertEndingReachability();
 
 for (const message of warnings) {
